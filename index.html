@@ -1,0 +1,23 @@
+from flask import Flask, request
+
+app = Flask (__name__)
+@app.route('/', methods=["GET","POST"])
+def index():
+    if request.method == "POST":
+        print(request.json)
+        
+        
+        return "<h1> esto es una peticion  POST: " + request.json["nombre"] + "<h1>"
+        
+    
+    else:
+        return '<h1>hola perros</h1>'
+
+
+@app.route('/otra_ruta')
+def otraruta():
+    return '<h1>hola perros de nuevo aqui estoy </h1>'
+
+
+if __name__ =="__main__":
+    app.run(host='0.0.0.0',port=4000, debug=True)
